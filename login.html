@@ -231,7 +231,12 @@ form.addEventListener("submit", async function(event){
     });
 
 
-  if(error){ 
+  if(error){
+  alert(error.message);
+  return;
+}
+
+window.location.href = "dashboard.html";
 
 
     message.style.color = "#ff6b6b";
