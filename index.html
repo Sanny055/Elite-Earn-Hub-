@@ -1,194 +1,314 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Elite Earn Hub</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<title>Elite Earn Hub</title>
 
-    body {
-      background: #0b1020;
-      color: white;
-      min-height: 100vh;
-    }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
 
-    .header {
-      padding: 22px 18px;
-      text-align: center;
-      background: #111a33;
-      border-bottom: 1px solid #26345c;
-    }
+body{
+  background:#07111f;
+  color:#fff;
+  min-height:100vh;
+}
 
-    .logo {
-      font-size: 28px;
-      font-weight: bold;
-    }
+.header{
+  background:#0d1b2e;
+  padding:18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #1d3550;
+}
 
-    .logo span {
-      color: #4da3ff;
-    }
+.logo{
+  font-size:21px;
+  font-weight:bold;
+}
 
-    .tagline {
-      margin-top: 8px;
-      color: #aab6d3;
-      font-size: 14px;
-    }
+.logo span{
+  color:#28a9ff;
+}
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 25px 18px;
-    }
+.menu{
+  font-size:25px;
+}
 
-    .hero {
-      text-align: center;
-      padding: 45px 15px;
-    }
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:20px;
+}
 
-    .hero h1 {
-      font-size: 36px;
-      margin-bottom: 15px;
-    }
+.welcome{
+  margin-bottom:20px;
+}
 
-    .hero h1 span {
-      color: #4da3ff;
-    }
+.welcome h1{
+  font-size:25px;
+  margin-bottom:7px;
+}
 
-    .hero p {
-      color: #aab6d3;
-      line-height: 1.6;
-      margin-bottom: 25px;
-    }
+.welcome p{
+  color:#8ea4bd;
+  font-size:14px;
+}
 
-    .buttons {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+.balance{
+  background:linear-gradient(135deg,#1261a0,#173b72);
+  padding:22px;
+  border-radius:18px;
+  margin-bottom:20px;
+  box-shadow:0 8px 25px rgba(0,0,0,.25);
+}
 
-    button {
-      border: none;
-      padding: 13px 24px;
-      border-radius: 10px;
-      font-size: 15px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+.balance-title{
+  color:#c9e8ff;
+  font-size:14px;
+}
 
-    .primary {
-      background: #318cff;
-      color: white;
-    }
+.balance-amount{
+  font-size:32px;
+  font-weight:bold;
+  margin:8px 0;
+}
 
-    .secondary {
-      background: #1b2747;
-      color: white;
-    }
+.balance small{
+  color:#b9d8ee;
+}
 
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 14px;
-      margin-top: 20px;
-    }
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:13px;
+}
 
-    .card {
-      background: #111a33;
-      border: 1px solid #26345c;
-      border-radius: 14px;
-      padding: 20px;
-      text-align: center;
-    }
+.card{
+  background:#0d1b2e;
+  border:1px solid #1b3148;
+  border-radius:16px;
+  padding:20px 15px;
+  text-align:center;
+  transition:.2s;
+}
 
-    .icon {
-      font-size: 28px;
-      margin-bottom: 10px;
-    }
+.card:hover{
+  transform:translateY(-2px);
+  border-color:#2498e8;
+}
 
-    .card h3 {
-      font-size: 16px;
-      margin-bottom: 7px;
-    }
+.icon{
+  font-size:29px;
+  margin-bottom:9px;
+}
 
-    .card p {
-      color: #9ca9c8;
-      font-size: 13px;
-      line-height: 1.4;
-    }
+.card h3{
+  font-size:15px;
+  margin-bottom:5px;
+}
 
-    footer {
-      text-align: center;
-      color: #697797;
-      font-size: 12px;
-      padding: 30px 15px;
-    }
-  </style>
+.card p{
+  color:#8197ad;
+  font-size:12px;
+}
+
+.section-title{
+  margin:28px 0 13px;
+  font-size:19px;
+}
+
+.task{
+  background:#0d1b2e;
+  border:1px solid #1b3148;
+  padding:16px;
+  border-radius:15px;
+  margin-bottom:12px;
+}
+
+.task-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:8px;
+}
+
+.task-name{
+  font-weight:bold;
+}
+
+.reward{
+  color:#38bdf8;
+  font-weight:bold;
+}
+
+.task p{
+  color:#8197ad;
+  font-size:13px;
+  margin-bottom:12px;
+}
+
+.task button{
+  width:100%;
+  padding:10px;
+  border:0;
+  border-radius:9px;
+  background:#1687d9;
+  color:#fff;
+  font-weight:bold;
+}
+
+.nav{
+  position:sticky;
+  bottom:0;
+  background:#0a1728;
+  border-top:1px solid #1b3148;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  padding:10px 5px;
+  margin-top:30px;
+}
+
+.nav div{
+  text-align:center;
+  color:#8ea4bd;
+  font-size:11px;
+}
+
+.nav span{
+  display:block;
+  font-size:19px;
+  margin-bottom:3px;
+}
+
+.footer{
+  text-align:center;
+  color:#52677d;
+  font-size:11px;
+  padding:25px 0 80px;
+}
+
+@media(min-width:650px){
+  .grid{
+    grid-template-columns:repeat(4,1fr);
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <header class="header">
-    <div class="logo">ELITE <span>EARN HUB</span></div>
-    <div class="tagline">Complete Tasks • Earn Rewards • Grow</div>
-  </header>
+<header class="header">
+  <div class="logo">ELITE <span>EARN HUB</span></div>
+  <div class="menu">☰</div>
+</header>
 
-  <main class="container">
+<main class="container">
 
-    <section class="hero">
-      <h1>Welcome to <span>Elite Earn Hub</span></h1>
+  <div class="welcome">
+    <h1>Welcome to Elite Earn Hub 👋</h1>
+    <p>Complete tasks and earn rewards.</p>
+  </div>
 
-      <p>
-        Complete available tasks, earn Senax rewards,
-        discover campaigns and manage your earnings from one place.
-      </p>
+  <div class="balance">
+    <div class="balance-title">Your Senax Balance</div>
+    <div class="balance-amount">0 Senax</div>
+    <small>Current rate will appear here</small>
+  </div>
 
-      <div class="buttons">
-        <button class="primary">Create Account</button>
-        <button class="secondary">Login</button>
-      </div>
-    </section>
+  <h2 class="section-title">Quick Access</h2>
 
-    <section class="features">
+  <div class="grid">
 
-      <div class="card">
-        <div class="icon">🎯</div>
-        <h3>Tasks</h3>
-        <p>Browse available campaigns and tasks.</p>
-      </div>
+    <div class="card">
+      <div class="icon">🎯</div>
+      <h3>All Tasks</h3>
+      <p>Find available tasks</p>
+    </div>
 
-      <div class="card">
-        <div class="icon">🪙</div>
-        <h3>Senax</h3>
-        <p>Earn Senax from eligible completed tasks.</p>
-      </div>
+    <div class="card">
+      <div class="icon">▶️</div>
+      <h3>YouTube</h3>
+      <p>YouTube campaigns</p>
+    </div>
 
-      <div class="card">
-        <div class="icon">📢</div>
-        <h3>Campaigns</h3>
-        <p>Create and manage your advertising campaigns.</p>
-      </div>
+    <div class="card">
+      <div class="icon">🌐</div>
+      <h3>Surfing</h3>
+      <p>Website tasks</p>
+    </div>
 
-      <div class="card">
-        <div class="icon">👥</div>
-        <h3>Referrals</h3>
-        <p>Invite users and manage your referrals.</p>
-      </div>
+    <div class="card">
+      <div class="icon">📋</div>
+      <h3>General</h3>
+      <p>Other tasks</p>
+    </div>
 
-    </section>
+    <div class="card">
+      <div class="icon">📢</div>
+      <h3>Create Task</h3>
+      <p>Advertise your campaign</p>
+    </div>
 
-  </main>
+    <div class="card">
+      <div class="icon">👥</div>
+      <h3>Referrals</h3>
+      <p>Invite and earn</p>
+    </div>
 
-  <footer>
-    © 2026 Elite Earn Hub. All rights reserved.
-  </footer>
+    <div class="card">
+      <div class="icon">💸</div>
+      <h3>Withdraw</h3>
+      <p>Request withdrawal</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">👤</div>
+      <h3>Profile</h3>
+      <p>Manage account</p>
+    </div>
+
+  </div>
+
+  <h2 class="section-title">Featured Tasks</h2>
+
+  <div class="task">
+    <div class="task-top">
+      <div class="task-name">Example Website Visit</div>
+      <div class="reward">+1 Senax</div>
+    </div>
+    <p>Visit the advertiser's website and complete the required action.</p>
+    <button>View Task</button>
+  </div>
+
+  <div class="task">
+    <div class="task-top">
+      <div class="task-name">Example Campaign</div>
+      <div class="reward">+2 Senax</div>
+    </div>
+    <p>Complete the advertiser's instructions to receive your reward.</p>
+    <button>View Task</button>
+  </div>
+
+</main>
+
+<nav class="nav">
+  <div><span>🏠</span>Home</div>
+  <div><span>🎯</span>Tasks</div>
+  <div><span>🪙</span>Wallet</div>
+  <div><span>👤</span>Profile</div>
+</nav>
+
+<div class="footer">
+  © 2026 Elite Earn Hub
+</div>
 
 </body>
-  </html>
+        </html>
