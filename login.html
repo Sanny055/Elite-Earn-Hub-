@@ -90,15 +90,6 @@ button:disabled{
   opacity:.6;
 }
 
-.forgot{
-  display:block;
-  text-align:right;
-  margin-top:10px;
-  color:#38bdf8;
-  font-size:12px;
-  text-decoration:none;
-}
-
 .message{
   text-align:center;
   margin-top:15px;
@@ -136,6 +127,7 @@ button:disabled{
   <form id="loginForm">
 
     <label>Email</label>
+
     <input
       id="email"
       type="email"
@@ -144,16 +136,13 @@ button:disabled{
     >
 
     <label>Password</label>
+
     <input
       id="password"
       type="password"
       placeholder="Enter your password"
       required
     >
-
-    <a href="#" class="forgot">
-      Forgot Password?
-    </a>
 
     <button id="loginBtn" type="submit">
       Login
@@ -170,6 +159,7 @@ button:disabled{
 
 </div>
 
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
@@ -180,11 +170,13 @@ const SUPABASE_URL =
 const SUPABASE_PUBLISHABLE_KEY =
   "sb_publishable_wtqfhJ1o9JG3LUvIcu2uaA_Ou8I4OV7";
 
+
 const supabaseClient =
   window.supabase.createClient(
     SUPABASE_URL,
     SUPABASE_PUBLISHABLE_KEY
   );
+
 
 const form =
   document.getElementById("loginForm");
@@ -194,6 +186,7 @@ const button =
 
 const message =
   document.getElementById("message");
+
 
 form.addEventListener("submit", async function(event){
 
@@ -205,42 +198,56 @@ form.addEventListener("submit", async function(event){
   const password =
     document.getElementById("password").value;
 
+
   message.textContent = "";
+
   button.disabled = true;
+
   button.textContent = "Logging in...";
 
-  try{
 
-    const { data, error } =
-      await supabaseClient.auth.signInWithPassword({
-        email: email,
-        password: password
-      });
+  const { data, error } =
+    await supabaseClient.auth.signInWithPassword({
 
-    if(error){
-      throw error;
-    }
+      email: email,
 
-    message.style.color = "#4ade80";
-    message.textContent = "Login successful!";
+      password: password
 
-    setTimeout(function(){
-      window.location.href = "index.html";
-    }, 700);
+    });
 
-  }catch(error){
+
+  if(error){
 
     message.style.color = "#ff6b6b";
+
     message.textContent =
-      error.message || "Login failed.";
+      error.message;
 
     button.disabled = false;
+
     button.textContent = "Login";
+
+    return;
+
   }
+
+
+  message.style.color = "#4ade80";
+
+  message.textContent =
+    "Login successful!";
+
+
+  setTimeout(function(){
+
+    window.location.href =
+      "index.html";
+
+  },700);
 
 });
 
 </script>
 
 </body>
-</html>
+  </html>
