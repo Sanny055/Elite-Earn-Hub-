@@ -83,6 +83,19 @@ button{
   color:white;
   font-size:15px;
   font-weight:bold;
+  cursor:pointer;
+}
+
+button:disabled{
+  opacity:.6;
+}
+
+.message{
+  text-align:center;
+  margin-top:15px;
+  font-size:13px;
+  line-height:1.5;
+  min-height:18px;
 }
 
 .login{
@@ -119,31 +132,64 @@ button{
     Create your account and start earning Senax.
   </div>
 
-  <form>
+  <form id="registerForm">
 
     <label>Full Name</label>
-    <input type="text" placeholder="Enter your full name">
+    <input
+      id="fullName"
+      type="text"
+      placeholder="Enter your full name"
+      required
+    >
 
     <label>Username</label>
-    <input type="text" placeholder="Choose a username">
+    <input
+      id="username"
+      type="text"
+      placeholder="Choose a username"
+      required
+    >
 
     <label>Email</label>
-    <input type="email" placeholder="Enter your email">
+    <input
+      id="email"
+      type="email"
+      placeholder="Enter your email"
+      required
+    >
 
     <label>Password</label>
-    <input type="password" placeholder="Create a password">
+    <input
+      id="password"
+      type="password"
+      placeholder="Create a password"
+      minlength="6"
+      required
+    >
 
     <label>Confirm Password</label>
-    <input type="password" placeholder="Confirm your password">
+    <input
+      id="confirmPassword"
+      type="password"
+      placeholder="Confirm your password"
+      minlength="6"
+      required
+    >
 
     <label>Referral Code (Optional)</label>
-    <input type="text" placeholder="Enter referral code">
+    <input
+      id="referralCode"
+      type="text"
+      placeholder="Enter referral code"
+    >
 
-    <button type="button">
+    <button id="registerBtn" type="submit">
       Create Account
     </button>
 
   </form>
+
+  <div id="message" class="message"></div>
 
   <div class="login">
     Already have an account?
@@ -155,69 +201,174 @@ button{
   </div>
 
 </div>
+
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
+
 const SUPABASE_URL =
   "https://mpjpptzuvbcsadfrjqev.supabase.co";
 
 const SUPABASE_PUBLISHABLE_KEY =
   "sb_publishable_wtqfhJ1o9JG3LUvIcu2uaA_Ou8I4OV7";
 
-const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_PUBLISHABLE_KEY
-);
 
-const inputs = document.querySelectorAll("input");
-const button = document.querySelector("button");
-const form = document.querySelector("form");
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
 
-button.addEventListener("click", async function () {
 
-  const fullName = inputs[0].value.trim();
-  const username = inputs[1].value.trim();
-  const email = inputs[2].value.trim();
-  const password = inputs[3].value;
-  const confirmPassword = inputs[4].value;
-  const referralCode = inputs[5].value.trim();
+const form =
+  document.getElementById("registerForm");
 
-  if (password !== confirmPassword) {
-    alert("Passwords do not match.");
+const button =
+  document.getElementById("registerBtn");
+
+const message =
+  document.getElementById("message");
+
+
+form.addEventListener("submit", async function(event){
+
+  event.preventDefault();
+
+
+  const fullName =
+    document.getElementById("fullName").value.trim();
+
+  const username =
+    document.getElementById("username").value.trim();
+
+  const email =
+    document.getElementById("email").value.trim();
+
+  const password =
+    document.getElementById("password").value;
+
+  const confirmPassword =
+    document.getElementById("confirmPassword").value;
+
+  const referralCode =
+    document.getElementById("referralCode").value.trim();
+
+
+  message.textContent = "";
+
+
+  if(password !== confirmPassword){
+
+    message.style.color = "#ff6b6b";
+
+    message.textContent =
+      "Passwords do not match.";
+
     return;
+
   }
 
-  if (password.length < 6) {
-    alert("Password must be at least 6 characters.");
+
+  if(password.length < 6){
+
+    message.style.color = "#ff6b6b";
+
+    message.textContent =
+      "Password must be at least 6 characters.";
+
     return;
+
   }
+
 
   button.disabled = true;
-  button.textContent = "Creating Account...";
 
-  const { data, error } = await supabaseClient.auth.signUp({
-    email: email,
-    password: password,
-    options: {
-      data: {
-        full_name: fullName,
-        username: username,
-        referral_code: referralCode
-      }
+  button.textContent =
+    "Creating Account...";
+
+
+  try{
+
+    const { data, error } =
+      await supabaseClient.auth.signUp({
+
+        email: email,
+
+        password: password,
+
+        options: {
+
+          data: {
+            full_name: fullName,
+            username: username,
+            referral_code: referralCode
+          }
+
+        }
+
+      });
+
+
+    if(error){
+      throw error;
     }
-  });
 
-  if (error) {
-    alert(error.message);
+
+    message.style.color =
+      "#4ade80";
+
+
+    if(data.session){
+
+      message.textContent =
+        "Account created successfully! Redirecting to dashboard...";
+
+      setTimeout(function(){
+
+        window.location.href =
+          "index.html";
+
+      },1000);
+
+    }else{
+
+      message.textContent =
+        "Account created! Please check your email for verification.";
+
+      button.disabled = false;
+
+      button.textContent =
+        "Create Account";
+
+      setTimeout(function(){
+
+        window.location.href =
+          "login.html";
+
+      },2500);
+
+    }
+
+
+  }catch(error){
+
+    message.style.color =
+      "#ff6b6b";
+
+    message.textContent =
+      error.message || "Unable to create account.";
+
     button.disabled = false;
-    button.textContent = "Create Account";
-    return;
+
+    button.textContent =
+      "Create Account";
+
   }
 
-  alert("Account created successfully! Check your email.");
-
-  window.location.href = "login.html";
 });
+
 </script>
+
 </body>
-  </html>
+</html>
