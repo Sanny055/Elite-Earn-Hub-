@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Panel - Elite Earn Hub</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#07111f;
+  color:#fff;
+  min-height:100vh;
+}
+
+.header{
+  background:#0d1b2e;
+  border-bottom:1px solid #24415e;
+  padding:18px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.logo{
+  font-size:21px;
+  font-weight:800;
+}
+
+.logo span{
+  color:#2da8ff;
+}
+
+.admin-badge{
+  background:#123b5b;
+  color:#38bdf8;
+  padding:7px 11px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:bold;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+}
+
+.welcome{
+  margin-bottom:20px;
+}
+
+.welcome h1{
+  font-size:24px;
+  margin-bottom:6px;
+}
+
+.welcome p{
+  color:#8da3ba;
+  font-size:13px;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-bottom:25px;
+}
+
+.card{
+  background:#0d1b2e;
+  border:1px solid #24415e;
+  border-radius:15px;
+  padding:17px;
+}
+
+.card-title{
+  color:#8da3ba;
+  font-size:12px;
+  margin-bottom:8px;
+}
+
+.card-value{
+  font-size:20px;
+  font-weight:bold;
+}
+
+.menu-title{
+  font-size:17px;
+  margin-bottom:12px;
+}
+
+.menu{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.menu-card{
+  background:#0d1b2e;
+  border:1px solid #24415e;
+  border-radius:15px;
+  padding:18px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.menu-card:hover{
+  border-color:#1687d9;
+  transform:translateY(-2px);
+}
+
+.icon{
+  font-size:25px;
+  margin-bottom:10px;
+}
+
+.menu-card h3{
+  font-size:15px;
+  margin-bottom:5px;
+}
+
+.menu-card p{
+  color:#71879d;
+  font-size:11px;
+  line-height:1.4;
+}
+
+.section{
+  margin-top:25px;
+}
+
+.announcement{
+  background:#0d1b2e;
+  border:1px solid #24415e;
+  border-radius:15px;
+  padding:18px;
+}
+
+.announcement textarea{
+  width:100%;
+  min-height:90px;
+  margin-top:12px;
+  padding:12px;
+  background:#081522;
+  color:#fff;
+  border:1px solid #294661;
+  border-radius:10px;
+  resize:vertical;
+  outline:none;
+}
+
+.btn{
+  width:100%;
+  margin-top:10px;
+  padding:12px;
+  background:#1687d9;
+  color:#fff;
+  border:0;
+  border-radius:9px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.footer{
+  text-align:center;
+  color:#526a80;
+  font-size:11px;
+  padding:30px 0 15px;
+}
+
+@media(min-width:700px){
+
+  .stats{
+    grid-template-columns:repeat(5,1fr);
+  }
+
+  .menu{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+  <div class="logo">
+    ELITE <span>EARN HUB</span>
+  </div>
+
+  <div class="admin-badge">
+    ADMIN PANEL
+  </div>
+
+</header>
+
+
+<main class="container">
+
+  <div class="welcome">
+    <h1>Admin Dashboard</h1>
+    <p>Manage Elite Earn Hub from one place.</p>
+  </div>
+
+
+  <!-- BALANCE CARDS -->
+
+  <div class="stats">
+
+    <div class="card">
+      <div class="card-title">
+        Referral Commission
+      </div>
+      <div class="card-value">
+        0 CENX
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        Deposit Balance
+      </div>
+      <div class="card-value">
+        0 CENX
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        Withdrawals
+      </div>
+      <div class="card-value">
+        0 CENX
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        Task Budget
+      </div>
+      <div class="card-value">
+        0 CENX
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        Ad Revenue
+      </div>
+      <div class="card-value">
+        0 CENX
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- MANAGEMENT -->
+
+  <div class="section">
+
+    <div class="menu-title">
+      Management
+    </div>
+
+    <div class="menu">
+
+      <div class="menu-card">
+        <div class="icon">👥</div>
+        <h3>Users</h3>
+        <p>View and manage registered users.</p>
+      </div>
+
+      <div class="menu-card">
+        <div class="icon">🎯</div>
+        <h3>Tasks</h3>
+        <p>Create and manage earning tasks.</p>
+      </div>
+
+      <div class="menu-card">
+        <div class="icon">📢</div>
+        <h3>Advertisements</h3>
+        <p>Manage advertisements and campaigns.</p>
+      </div>
+
+      <div class="menu-card">
+        <div class="icon">💰</div>
+        <h3>Deposits</h3>
+        <p>Review and manage deposit requests.</p>
+      </div>
+
+      <div class="menu-card">
+        <div class="icon">💸</div>
+        <h3>Withdrawals</h3>
+        <p>Review and manage withdrawal requests.</p>
+      </div>
+
+      <div class="menu-card">
+        <div class="icon">👥</div>
+        <h3>Referral Commission</h3>
+        <p>Track Level 1 referral commissions.</p>
+      </div>
+
+      <div class="menu-card">
+        <div class="icon">🏆</div>
+        <h3>Leaderboard</h3>
+        <p>View top earning users.</p>
+      </div>
+
+      <div class="menu-card">
+        <div class="icon">🏅</div>
+        <h3>Competition</h3>
+        <p>Manage competitions and rewards.</p>
+      </div>
+
+      <div class="menu-card">
+        <div class="icon">💳</div>
+        <h3>Payment Accounts</h3>
+        <p>Change deposit and withdrawal accounts.</p>
+      </div>
+
+      <div class="menu-card">
+        <div class="icon">📱</div>
+        <h3>Official Channels</h3>
+        <p>Manage WhatsApp and Telegram links.</p>
+      </div>
+
+      <div class="menu-card">
+        <div class="icon">🆘</div>
+        <h3>Support</h3>
+        <p>Manage support contact information.</p>
+      </div>
+
+      <div class="menu-card">
+        <div class="icon">⚙️</div>
+        <h3>Settings</h3>
+        <p>Manage platform settings.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ANNOUNCEMENT -->
+
+  <div class="section">
+
+    <div class="menu-title">
+      📣 Announcement
+    </div>
+
+    <div class="announcement">
+
+      <p style="color:#8da3ba;font-size:13px;">
+        Send an announcement to all users.
+      </p>
+
+      <textarea
+        id="announcementText"
+        placeholder="Write your announcement..."
+      ></textarea>
+
+      <button
+        class="btn"
+        onclick="sendAnnouncement()"
+      >
+        Send Announcement
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="footer">
+    Elite Earn Hub • Admin Control Center
+  </div>
+
+</main>
+
+
+<script>
+
+function sendAnnouncement(){
+
+  const text =
+    document.getElementById("announcementText").value.trim();
+
+  if(!text){
+
+    alert("Please write an announcement first.");
+
+    return;
+
+  }
+
+  alert(
+    "Announcement saved for the next setup step."
+  );
+
+}
+
+</script>
+
+</body>
+  </html>
