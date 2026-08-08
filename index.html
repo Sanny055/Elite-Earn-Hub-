@@ -12,7 +12,30 @@
   padding:0;
   font-family:Arial,sans-serif;
 }
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+<script>
+const SUPABASE_URL =
+  "https://mpjpptzuvbcsadfrjqev.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+  "sb_publishable_wtqfhJ1o9JG3LUvIcu2uaA_Ou8I4OV7";
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
+
+(async function(){
+
+  const { data } = await supabaseClient.auth.getSession();
+
+  if (!data.session) {
+    window.location.replace("login.html");
+  }
+
+})();
+</script>
 body{
   background:#07111f;
   color:#fff;
