@@ -1,139 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-const supabaseClient = window.supabase.createClient(
-  "APNA_SUPABASE_URL",
-  "APNI_PUBLIC_KEY"
-);
-</script>
-  <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login - Elite Earn Hub</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Elite Earn Hub</title>
 
-<style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial,sans-serif;
-}
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-body{
-  background:#07111f;
-  color:white;
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
-}
-<script>
-(async function () {
-  const { data } = await supabaseClient.auth.getSession();
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
 
-  if (!data.session) {
-    window.location.href = "login.html";
-  }
-})();
-</script>
-.box{
-  width:100%;
-  max-width:430px;
-  background:#0d1b2e;
-  border:1px solid #24415e;
-  border-radius:20px;
-  padding:25px;
-  box-shadow:0 8px 30px rgba(0,0,0,.3);
-}
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #07111f;
+      color: white;
+      padding: 20px;
+    }
 
-.logo{
-  text-align:center;
-  font-size:25px;
-  font-weight:800;
-  margin-bottom:8px;
-}
+    .container {
+      width: 100%;
+      max-width: 400px;
+      background: #0d1b2e;
+      padding: 25px;
+      border-radius: 16px;
+      border: 1px solid #24415e;
+    }
 
-.logo span{
-  color:#2da8ff;
-}
+    h1 {
+      text-align: center;
+      margin-bottom: 8px;
+    }
 
-.subtitle{
-  text-align:center;
-  color:#8da3ba;
-  font-size:14px;
-  margin-bottom:25px;
-}
+    .subtitle {
+      text-align: center;
+      color: #8da3ba;
+      margin-bottom: 25px;
+      font-size: 13px;
+    }
 
-label{
-  display:block;
-  margin:15px 0 7px;
-  font-size:13px;
-  color:#c9d9e8;
-}
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 13px;
+    }
 
-input{
-  width:100%;
-  padding:13px;
-  border-radius:10px;
-  border:1px solid #294661;
-  background:#081522;
-  color:white;
-  outline:none;
-  font-size:14px;
-}
+    input {
+      width: 100%;
+      padding: 13px;
+      margin-bottom: 16px;
+      border-radius: 8px;
+      border: 1px solid #294661;
+      background: #081522;
+      color: white;
+      outline: none;
+    }
 
-input:focus{
-  border-color:#1687d9;
-}
+    button {
+      width: 100%;
+      padding: 13px;
+      border: none;
+      border-radius: 8px;
+      background: #1687d9;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-button{
-  width:100%;
-  padding:14px;
-  margin-top:22px;
-  border:0;
-  border-radius:10px;
-  background:#1687d9;
-  color:white;
-  font-size:15px;
-  font-weight:bold;
-  cursor:pointer;
-}
+    button:disabled {
+      opacity: .6;
+    }
 
-button:disabled{
-  opacity:.6;
-}
+    #message {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.5;
+    }
 
-.message{
-  text-align:center;
-  margin-top:15px;
-  font-size:13px;
-  min-height:18px;
-}
+    .register {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 13px;
+      color: #8da3ba;
+    }
 
-.register{
-  text-align:center;
-  margin-top:20px;
-  color:#8da3ba;
-  font-size:13px;
-}
-
-.register a{
-  color:#38bdf8;
-  text-decoration:none;
-  font-weight:bold;
-}
-</style>
+    .register span {
+      color: #38bdf8;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="box">
+<div class="container">
 
-  <div class="logo">
-    ELITE <span>EARN HUB</span>
-  </div>
+  <h1>Elite Earn Hub</h1>
 
   <div class="subtitle">
     Login to your account
@@ -144,8 +114,8 @@ button:disabled{
     <label>Email</label>
 
     <input
-      id="email"
       type="email"
+      id="email"
       placeholder="Enter your email"
       required
     >
@@ -153,121 +123,121 @@ button:disabled{
     <label>Password</label>
 
     <input
-      id="password"
       type="password"
+      id="password"
       placeholder="Enter your password"
       required
     >
 
-    <button id="loginBtn" type="submit">
+    <button type="submit" id="loginBtn">
       Login
     </button>
 
   </form>
 
-  <div id="message" class="message"></div>
+  <div id="message"></div>
 
   <div class="register">
     Don't have an account?
-    <a href="register.html">Create Account</a>
+    <span onclick="showRegister()">Register</span>
   </div>
 
 </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script>
 
-const SUPABASE_URL =
-  "https://mpjpptzuvbcsadfrjqev.supabase.co";
+  /* =========================
+     SUPABASE
+     ========================= */
 
-const SUPABASE_PUBLISHABLE_KEY =
-  "sb_publishable_wtqfhJ1o9JG3LUvIcu2uaA_Ou8I4OV7";
+  const SUPABASE_URL = "https://mpjpptzuvbcsadfrjqev.supabase.co";
+  const SUPABASE_PUBLIC_KEY = "sb_publishable_wtqfhJ1o9JG3LUvIcu2uaA_Ou8I4OV7";
 
-
-const supabaseClient =
-  window.supabase.createClient(
+  const supabaseClient = window.supabase.createClient(
     SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
+    SUPABASE_PUBLIC_KEY
   );
 
 
-const form =
-  document.getElementById("loginForm");
+  /* =========================
+     LOGIN
+     ========================= */
 
-const button =
-  document.getElementById("loginBtn");
+  document.getElementById("loginForm").addEventListener(
+    "submit",
+    async function(event) {
 
-const message =
-  document.getElementById("message");
+      event.preventDefault();
 
+      const email =
+        document.getElementById("email").value.trim();
 
-form.addEventListener("submit", async function(event){
+      const password =
+        document.getElementById("password").value;
 
-  event.preventDefault();
+      const loginBtn =
+        document.getElementById("loginBtn");
 
-  const email =
-    document.getElementById("email").value.trim();
+      const message =
+        document.getElementById("message");
 
-  const password =
-    document.getElementById("password").value;
+      loginBtn.disabled = true;
+      loginBtn.textContent = "Logging in...";
 
-
-  message.textContent = "";
-
-  button.disabled = true;
-
-  button.textContent = "Logging in...";
-
-
-  const { data, error } =
-    await supabaseClient.auth.signInWithPassword({
-
-      email: email,
-
-      password: password
-
-    });
+      message.textContent = "";
 
 
-  if(error){
-  alert(error.message);
-  return;
-}
+      const { data, error } =
+        await supabaseClient.auth.signInWithPassword({
+          email: email,
+          password: password
+        });
 
-window.location.href = "dashboard.html";
+
+      if (error) {
+
+        message.textContent = error.message;
+        message.style.color = "#ff6b7a";
+
+        loginBtn.disabled = false;
+        loginBtn.textContent = "Login";
+
+        return;
+      }
 
 
-    message.style.color = "#ff6b6b";
+      message.textContent =
+        "Login successful. Opening Dashboard...";
 
-    message.textContent =
-      error.message;
+      message.style.color = "#5ee68a";
 
-    button.disabled = false;
 
-    button.textContent = "Login";
+      /* IMPORTANT:
+         Dashboard file is now dashboard.html
+      */
 
-    return;
+      setTimeout(function() {
+
+        window.location.href = "dashboard.html";
+
+      }, 500);
+
+    }
+  );
+
+
+  /* =========================
+     REGISTER
+     ========================= */
+
+  function showRegister() {
+
+    alert("Registration page can be connected here.");
 
   }
-
-
-  message.style.color = "#4ade80";
-
-  message.textContent =
-    "Login successful!";
-
-
-  setTimeout(function(){
-
-    window.location.href = "dashboard.html";
-
-  },700);
-
-});
 
 </script>
 
 </body>
-  </html>
+</html>
