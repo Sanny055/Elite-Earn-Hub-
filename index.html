@@ -3,14 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Elite Earn Hub</title>
 
 <style>
 *{
+  box-sizing:border-box;
   margin:0;
   padding:0;
-  box-sizing:border-box;
   font-family:Arial,sans-serif;
 }
 
@@ -22,24 +21,24 @@ body{
 
 .header{
   background:#0d1b2e;
+  border-bottom:1px solid #203650;
   padding:18px;
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  border-bottom:1px solid #1d3550;
+  justify-content:space-between;
 }
 
 .logo{
   font-size:21px;
-  font-weight:bold;
+  font-weight:800;
 }
 
 .logo span{
-  color:#28a9ff;
+  color:#2da8ff;
 }
 
 .menu{
-  font-size:25px;
+  font-size:27px;
 }
 
 .container{
@@ -49,7 +48,7 @@ body{
 }
 
 .welcome{
-  margin-bottom:20px;
+  margin:8px 0 20px;
 }
 
 .welcome h1{
@@ -57,57 +56,83 @@ body{
   margin-bottom:7px;
 }
 
-.welcome p{
-  color:#8ea4bd;
-  font-size:14px;
+.welcome p,
+.card p,
+.task p,
+.referral p{
+  color:#8da3ba;
+}
+
+.balance-box{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+  margin-bottom:22px;
 }
 
 .balance{
-  background:linear-gradient(135deg,#1261a0,#173b72);
-  padding:22px;
+  padding:21px;
   border-radius:18px;
-  margin-bottom:20px;
-  box-shadow:0 8px 25px rgba(0,0,0,.25);
+  border:1px solid #24415e;
+}
+
+.main-balance{
+  background:linear-gradient(135deg,#1268a8,#173c73);
+}
+
+.ad-balance{
+  background:linear-gradient(135deg,#263d55,#172a3d);
 }
 
 .balance-title{
-  color:#c9e8ff;
+  color:#cbe9ff;
   font-size:14px;
 }
 
 .balance-amount{
-  font-size:32px;
-  font-weight:bold;
+  font-size:30px;
+  font-weight:800;
   margin:8px 0;
 }
 
 .balance small{
-  color:#b9d8ee;
+  color:#b4cee2;
+}
+
+.balance-action,
+.task button{
+  width:100%;
+  padding:11px;
+  border:0;
+  border-radius:9px;
+  background:#1687d9;
+  color:white;
+  font-weight:bold;
+  margin-top:12px;
+}
+
+.section-title{
+  font-size:20px;
+  margin:26px 0 13px;
 }
 
 .grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:13px;
+  gap:12px;
 }
 
 .card{
   background:#0d1b2e;
-  border:1px solid #1b3148;
+  border:1px solid #1e3852;
   border-radius:16px;
-  padding:20px 15px;
+  padding:19px 12px;
   text-align:center;
-  transition:.2s;
 }
 
-.card:hover{
-  transform:translateY(-2px);
-  border-color:#2498e8;
-}
-
-.icon{
+.card-icon{
   font-size:29px;
-  margin-bottom:9px;
+  margin-bottom:8px;
 }
 
 .card h3{
@@ -116,32 +141,22 @@ body{
 }
 
 .card p{
-  color:#8197ad;
   font-size:12px;
-}
-
-.section-title{
-  margin:28px 0 13px;
-  font-size:19px;
 }
 
 .task{
   background:#0d1b2e;
-  border:1px solid #1b3148;
-  padding:16px;
+  border:1px solid #1e3852;
   border-radius:15px;
+  padding:16px;
   margin-bottom:12px;
 }
 
 .task-top{
   display:flex;
   justify-content:space-between;
-  align-items:center;
+  gap:10px;
   margin-bottom:8px;
-}
-
-.task-name{
-  font-weight:bold;
 }
 
 .reward{
@@ -150,41 +165,121 @@ body{
 }
 
 .task p{
-  color:#8197ad;
   font-size:13px;
-  margin-bottom:12px;
 }
 
-.task button{
-  width:100%;
-  padding:10px;
-  border:0;
-  border-radius:9px;
-  background:#1687d9;
-  color:#fff;
+.referral,
+.leaderboard,
+.competition,
+.support,
+.channels,
+.ad-tools{
+  background:#0d1b2e;
+  border:1px solid #1e3852;
+  border-radius:16px;
+  padding:17px;
+}
+
+.referral-rate{
+  color:#38bdf8;
+  font-size:25px;
   font-weight:bold;
+  margin:8px 0;
+}
+
+.rank{
+  display:flex;
+  justify-content:space-between;
+  padding:12px 4px;
+  border-bottom:1px solid #203650;
+}
+
+.rank:last-child{
+  border-bottom:0;
+}
+
+.rank-name{
+  font-weight:bold;
+}
+
+.rank-value{
+  color:#38bdf8;
+}
+
+.tool-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.tool{
+  background:#14263b;
+  border-radius:12px;
+  padding:15px;
+  text-align:center;
+}
+
+.tool strong{
+  display:block;
+  margin-top:6px;
+}
+
+.channel-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.channel{
+  background:#14263b;
+  border-radius:12px;
+  padding:17px;
+  text-align:center;
+}
+
+.channel-icon{
+  font-size:30px;
+}
+
+.channel button{
+  margin-top:10px;
+  padding:8px 15px;
+  border:0;
+  border-radius:8px;
+  background:#1687d9;
+  color:white;
+  font-weight:bold;
+}
+
+.support-item{
+  padding:13px 0;
+  border-bottom:1px solid #203650;
+}
+
+.support-item:last-child{
+  border-bottom:0;
 }
 
 .nav{
   position:sticky;
   bottom:0;
-  background:#0a1728;
-  border-top:1px solid #1b3148;
+  background:#091729;
+  border-top:1px solid #1d344c;
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  padding:10px 5px;
+  padding:9px 4px;
   margin-top:30px;
 }
 
-.nav div{
+.nav-item{
   text-align:center;
-  color:#8ea4bd;
+  color:#8da3ba;
   font-size:11px;
 }
 
-.nav span{
+.nav-item span{
   display:block;
-  font-size:19px;
+  font-size:20px;
   margin-bottom:3px;
 }
 
@@ -196,6 +291,10 @@ body{
 }
 
 @media(min-width:650px){
+  .balance-box{
+    grid-template-columns:1fr 1fr;
+  }
+
   .grid{
     grid-template-columns:repeat(4,1fr);
   }
@@ -212,144 +311,304 @@ body{
 
 <main class="container">
 
-  <div class="welcome">
-    <h1>Welcome to Elite Earn Hub 👋</h1>
-    <p>Complete tasks and earn rewards.</p>
+<div class="welcome">
+  <h1>Welcome to Elite Earn Hub 👋</h1>
+  <p>Complete tasks, earn Senax and grow your account.</p>
+</div>
+
+<!-- BALANCES -->
+
+<div class="balance-box">
+
+  <div class="balance main-balance">
+    <div class="balance-title">🪙 Main Balance</div>
+    <div class="balance-amount">0 Senax</div>
+    <small>Withdrawable balance</small>
+    <button class="balance-action">Withdraw</button>
   </div>
 
-  .balances{
-  margin-bottom:20px;
-}
+  <div class="balance ad-balance">
+    <div class="balance-title">📢 Advertisement Balance</div>
+    <div class="balance-amount">0 Senax</div>
+    <small>For advertisements only</small>
+    <button class="balance-action">Deposit / Transfer</button>
+  </div>
 
-.balance{
-  padding:22px;
-  border-radius:18px;
-  margin-bottom:12px;
-  box-shadow:0 8px 25px rgba(0,0,0,.25);
-}
+</div>
 
-.main-balance{
-  background:linear-gradient(135deg,#1261a0,#173b72);
-}
+<div class="section-title">Quick Access</div>
 
-.ad-balance{
-  background:linear-gradient(135deg,#263b52,#182a3d);
-}
+<div class="grid">
 
-.balance-title{
-  color:#c9e8ff;
-  font-size:14px;
-}
+  <div class="card">
+    <div class="card-icon">🎯</div>
+    <h3>All Tasks</h3>
+    <p>Available tasks</p>
+  </div>
 
-.balance-amount{
-  font-size:30px;
-  font-weight:bold;
-  margin:8px 0;
-}
+  <div class="card">
+    <div class="card-icon">▶️</div>
+    <h3>YouTube</h3>
+    <p>Like, subscribe & view</p>
+  </div>
 
-.balance small{
-  color:#b9d8ee;
-}
+  <div class="card">
+    <div class="card-icon">🌐</div>
+    <h3>Surfing</h3>
+    <p>Website tasks</p>
+  </div>
 
-.transfer-btn{
-  width:100%;
-  padding:13px;
-  border:0;
-  border-radius:10px;
-  background:#1687d9;
-  color:white;
-  font-size:14px;
-  font-weight:bold;
-}
+  <div class="card">
+    <div class="card-icon">📋</div>
+    <h3>General Tasks</h3>
+    <p>Custom tasks</p>
+  </div>
 
-.transfer-info{
-  text-align:center;
-  color:#8197ad;
-  font-size:12px;
-  margin-top:8px;
-}
+  <div class="card">
+    <div class="card-icon">📢</div>
+    <h3>Create Advertisement</h3>
+    <p>Promote your campaign</p>
+  </div>
 
-  <h2 class="section-title">Quick Access</h2>
+  <div class="card">
+    <div class="card-icon">👥</div>
+    <h3>Referrals</h3>
+    <p>Level 1 • 0.5%</p>
+  </div>
 
-  <div class="grid">
+  <div class="card">
+    <div class="card-icon">🏆</div>
+    <h3>Leaderboard</h3>
+    <p>Top performers</p>
+  </div>
 
-    <div class="card">
-      <div class="icon">🎯</div>
-      <h3>All Tasks</h3>
-      <p>Find available tasks</p>
+  <div class="card">
+    <div class="card-icon">🏅</div>
+    <h3>Competition</h3>
+    <p>Weekly & monthly</p>
+  </div>
+
+</div>
+
+<!-- ADVERTISEMENT TOOLS -->
+
+<div class="section-title">Advertisement Center</div>
+
+<div class="ad-tools">
+
+  <div class="tool-row">
+
+    <div class="tool">
+      📢
+      <strong>Active Ads</strong>
+      <small>0 / 10</small>
     </div>
 
-    <div class="card">
-      <div class="icon">▶️</div>
-      <h3>YouTube</h3>
-      <p>YouTube campaigns</p>
-    </div>
-
-    <div class="card">
-      <div class="icon">🌐</div>
-      <h3>Surfing</h3>
-      <p>Website tasks</p>
-    </div>
-
-    <div class="card">
-      <div class="icon">📋</div>
-      <h3>General</h3>
-      <p>Other tasks</p>
-    </div>
-
-    <div class="card">
-      <div class="icon">📢</div>
-      <h3>Create Task</h3>
-      <p>Advertise your campaign</p>
-    </div>
-
-    <div class="card">
-      <div class="icon">👥</div>
-      <h3>Referrals</h3>
-      <p>Invite and earn</p>
-    </div>
-
-    <div class="card">
-      <div class="icon">💸</div>
-      <h3>Withdraw</h3>
-      <p>Request withdrawal</p>
-    </div>
-
-    <div class="card">
-      <div class="icon">👤</div>
-      <h3>Profile</h3>
-      <p>Manage account</p>
+    <div class="tool">
+      📌
+      <strong>Top 3 Promotion</strong>
+      <small>From 5 minutes</small>
     </div>
 
   </div>
 
-  <h2 class="section-title">Featured Tasks</h2>
+</div>
 
-  <div class="task">
-    <div class="task-top">
-      <div class="task-name">Example Website Visit</div>
-      <div class="reward">+1 Senax</div>
-    </div>
-    <p>Visit the advertiser's website and complete the required action.</p>
-    <button>View Task</button>
+<!-- FEATURED TASKS -->
+
+<div class="section-title">Featured Tasks</div>
+
+<div class="task">
+  <div class="task-top">
+    <div><strong>YouTube Subscribe</strong></div>
+    <div class="reward">+0.3 Senax</div>
+  </div>
+  <p>Subscribe to the advertiser's YouTube channel.</p>
+  <button>View Task</button>
+</div>
+
+<div class="task">
+  <div class="task-top">
+    <div><strong>YouTube Like</strong></div>
+    <div class="reward">+0.3 Senax</div>
+  </div>
+  <p>Like the advertiser's YouTube video.</p>
+  <button>View Task</button>
+</div>
+
+<div class="task">
+  <div class="task-top">
+    <div><strong>Custom Platform Task</strong></div>
+    <div class="reward">Reward</div>
+  </div>
+  <p>Official Elite Earn Hub task created by the platform admin.</p>
+  <button>View Task</button>
+</div>
+
+<!-- USER LEADERBOARD -->
+
+<div class="section-title">🏆 Top Users</div>
+
+<div class="leaderboard">
+
+  <div class="rank">
+    <span class="rank-name">🥇 #1 User</span>
+    <span class="rank-value">Tasks Completed</span>
   </div>
 
-  <div class="task">
-    <div class="task-top">
-      <div class="task-name">Example Campaign</div>
-      <div class="reward">+2 Senax</div>
-    </div>
-    <p>Complete the advertiser's instructions to receive your reward.</p>
-    <button>View Task</button>
+  <div class="rank">
+    <span class="rank-name">🥈 #2 User</span>
+    <span class="rank-value">Tasks Completed</span>
   </div>
+
+  <div class="rank">
+    <span class="rank-name">🥉 #3 User</span>
+    <span class="rank-value">Tasks Completed</span>
+  </div>
+
+  <div class="rank">
+    <span class="rank-name">#4 User</span>
+    <span class="rank-value">Tasks Completed</span>
+  </div>
+
+  <div class="rank">
+    <span class="rank-name">#5 User</span>
+    <span class="rank-value">Tasks Completed</span>
+  </div>
+
+</div>
+
+<!-- ADVERTISER LEADERBOARD -->
+
+<div class="section-title">📢 Top Advertisers</div>
+
+<div class="leaderboard">
+
+  <div class="rank">
+    <span class="rank-name">🥇 #1 Advertiser</span>
+    <span class="rank-value">Top Campaign</span>
+  </div>
+
+  <div class="rank">
+    <span class="rank-name">🥈 #2 Advertiser</span>
+    <span class="rank-value">Top Campaign</span>
+  </div>
+
+  <div class="rank">
+    <span class="rank-name">🥉 #3 Advertiser</span>
+    <span class="rank-value">Top Campaign</span>
+  </div>
+
+</div>
+
+<!-- COMPETITION -->
+
+<div class="section-title">🏅 Competition</div>
+
+<div class="competition">
+
+  <h3>Weekly Competition</h3>
+  <br>
+
+  <p>
+    Complete approved tasks and compete for the top positions.
+  </p>
+
+  <br>
+
+  <small>
+    Competition status and rewards will be controlled by Admin.
+  </small>
+
+</div>
+
+<!-- REFERRAL -->
+
+<div class="section-title">👥 Referral Program</div>
+
+<div class="referral">
+
+  <p>Earn commission from your direct Level 1 referrals.</p>
+
+  <div class="referral-rate">0.5%</div>
+
+  <p>Only direct referrals are eligible for commission.</p>
+
+</div>
+
+<!-- OFFICIAL CHANNELS -->
+
+<div class="section-title">📱 Official Channels</div>
+
+<div class="channels">
+
+  <div class="channel-row">
+
+    <div class="channel">
+      <div class="channel-icon">🟢</div>
+      <strong>WhatsApp</strong>
+      <br>
+      <button>Join Channel</button>
+    </div>
+
+    <div class="channel">
+      <div class="channel-icon">🔵</div>
+      <strong>Telegram</strong>
+      <br>
+      <button>Join Channel</button>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ADMIN SUPPORT -->
+
+<div class="section-title">🆘 Admin Support</div>
+
+<div class="support">
+
+  <div class="support-item">
+    📱 <strong>WhatsApp Support</strong>
+    <p>Contact Elite Earn Hub Admin</p>
+  </div>
+
+  <div class="support-item">
+    📧 <strong>Email Support</strong>
+    <p>Official support email</p>
+  </div>
+
+  <div class="support-item">
+    💬 <strong>Contact Admin</strong>
+    <p>Get help regarding your account.</p>
+  </div>
+
+</div>
 
 </main>
 
 <nav class="nav">
-  <div><span>🏠</span>Home</div>
-  <div><span>🎯</span>Tasks</div>
-  <div><span>🪙</span>Wallet</div>
-  <div><span>👤</span>Profile</div>
+
+  <div class="nav-item">
+    <span>🏠</span>
+    Home
+  </div>
+
+  <div class="nav-item">
+    <span>🎯</span>
+    Tasks
+  </div>
+
+  <div class="nav-item">
+    <span>🪙</span>
+    Wallet
+  </div>
+
+  <div class="nav-item">
+    <span>👤</span>
+    Profile
+  </div>
+
 </nav>
 
 <div class="footer">
@@ -357,4 +616,4 @@ body{
 </div>
 
 </body>
-        </html>
+  </html>
